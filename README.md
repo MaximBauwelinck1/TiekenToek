@@ -39,3 +39,4 @@ To supply everything of power I used 3 solar panels wich give me a total of 5v a
 - [Systemd service running on home server handling pipeline.](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Streaming%20service%20home%20server)
 - Nginx server
 - [SystemD service running on remote pi zero 2W](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Streaming%20service%20zero%202W)
+- [Pico Py script](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Pico)
