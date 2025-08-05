@@ -1,0 +1,15 @@
+[Unit]
+Description=GStreamer Video Stream
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gst-launch-1.0 -v libcamerasrc ! video/x-raw,width=640,height=480,framerate=15/1 ! queue ! videoconvert ! queue ! x264enc speed-preset=superfast bitrate=200 ! queue ! rtph264pay ! queue ! udpsink host=xxxxxxx port=5000
+WorkingDirectory=/home/maxim/
+StandardOutput=journal
+StandardError=journal
+Restart=always
+User=maxim
+Group=maxim
+
+[Install]
+WantedBy=multi-user.target
