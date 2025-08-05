@@ -35,5 +35,6 @@ To supply everything of power I used 3 solar panels wich give me a total of 5v a
 - 1x sim card
 
 **Software**
-- 1x sim card subscription with data
-- Systemd service running on home server handling pipeline.
+-  sim card subscription with data
+- [Systemd service running on home server handling pipeline.](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Streaming%20service%20home%20server)
+- Nginx server
