@@ -1,0 +1,15 @@
+
+[Unit]
+Description=HLS Streaming Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gst-launch-1.0 udpsrc port=5000 ! application/x-rtp ! rtph264depay ! queue ! avdec_h264 ! queue ! videoconvert ! queue ! x264enc speed-preset=superfast bitrate=200 ! mpegtsmux ! hlssink max-files=5 location="/home/max/hls/segment%%05d.ts" playlist-location="/home/max/hls/playlist.m3u8"
+Restart=always
+User=max
+WorkingDirectory=/home/max
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
