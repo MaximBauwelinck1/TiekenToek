@@ -1,0 +1,61 @@
+from machine import Pin, time_pulse_us
+import time
+
+TRIG_PIN = 3  # GP3
+ECHO_PIN = 2  # GP2
+OUTPUT_PIN = 4  # GP4 
+
+trig = Pin(TRIG_PIN, Pin.OUT)
+echo = Pin(ECHO_PIN, Pin.IN)
+output = Pin(OUTPUT_PIN, Pin.OUT)
+output.low()
+
+SOUND_SPEED_CM_PER_US = 0.0343 / 2  
+SIGMA_CM = 3  
+MAX_DISTANCE_CM = 550
+MAX_TIMEOUT_US = int((MAX_DISTANCE_CM * 2) / 0.0343)
+
+TIMER_DURATION_SEC = 45 * 60  # 45 minutes = 2700 seconds
+last_movement_time = time.time()
+
+def measure_distance():
+    trig.low()
+    time.sleep_us(2)
+    trig.high()
+    time.sleep_us(10)
+    trig.low()
+    
+    try:
+        duration = time_pulse_us(echo, 1, MAX_TIMEOUT_US)
+        distance = duration * SOUND_SPEED_CM_PER_US
+        return round(distance, 1)
+    except OSError:
+        return None
+
+print("Motion timer started (45min)...")
+prev_distance = measure_distance()
+time.sleep(0.5)
+
+while True:
+    current_distance = measure_distance()
+    now = time.time()
+
+    if current_distance is not None and prev_distance is not None:
+        delta = abs(current_distance - prev_distance)
+        print(delta)
+        if delta > SIGMA_CM:
+            print(f"[MOTION] Δ = {delta:.1f} cm → Reset timer")
+            last_movement_time = now
+            if not output.value():
+                print("Output ON")
+                output.high()
+        else:
+            print(f"Stable: {current_distance:.1f} cm")
+
+        prev_distance = current_distance
+
+    if output.value() and (now - last_movement_time >= TIMER_DURATION_SEC):
+        print("[TIMEOUT] No motion for 45 min → Output OFF")
+        output.low()
+
+    time.sleep(0.5)
