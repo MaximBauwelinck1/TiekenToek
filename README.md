@@ -1,6 +1,11 @@
 # TiekenToek
 This repo contains the hardware setup used to stream the video from https://tiekentoek.be
+
 [Front end repo](https://github.com/MaximBauwelinck1/TiekEnToekFrontEnd)
+
+![TiekEnToekCamera1](https://github.com/user-attachments/assets/e36239b6-cb58-4ae3-83f9-c98bb9f3ace8)
+
+
 
 ## Goal
 The goal of this project was to stream video from a remote location where internet connection and a power outlet where absent. 
@@ -41,3 +46,21 @@ To supply everything of power I used 3 solar panels wich give me a total of 5v a
 - Nginx server
 - [SystemD service running on remote pi zero 2W](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Streaming%20service%20zero%202W)
 - [Pico Py script](https://github.com/MaximBauwelinck1/TiekenToek/blob/main/scripts/Pico)
+
+## Electrical wiring
+ <img width="3000" height="4000" alt="image" src="https://github.com/user-attachments/assets/21131d52-774a-42d7-9d1d-e3a14c921259" />
+
+ ![testt](https://github.com/user-attachments/assets/7d1da792-a10b-483b-8724-43d90a014e98)
+
+ ![20250804_232245](https://github.com/user-attachments/assets/3bbb4652-8cbd-4336-ab5d-94cf6c0c4958)
+
+<img width="4000" height="3000" alt="image" src="https://github.com/user-attachments/assets/4f2d1435-39e9-43cc-9dbd-3c3e4c61ee9f" />
+
+![20250804_232429](https://github.com/user-attachments/assets/24cb8b6f-726d-41a7-872b-b4dabfffd295)
+
+![rn_image_picker_lib_temp_d2c5df95-f211-45a0-92c2-a630b6bdf154](https://github.com/user-attachments/assets/781b313e-acba-4d24-af19-ca78ffa1dbc0)
+
+
+
+
+ 
